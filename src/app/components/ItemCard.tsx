@@ -1,7 +1,13 @@
 import { FaStar } from "react-icons/fa"
 import { FaCartShopping } from "react-icons/fa6"
-
-export const ItemCard = ()=>{
+type Product = {
+    id: string;
+    name: string;
+    price: number;
+    description?: string;
+    inStock: boolean;
+};
+export const ItemCard = ( props:Product)=>{
     return (
         <div className="flex w-64  flex-wrap justify-center   flex-col gap-2 m-2 p-2 border-2 border-gray-300 cursor-pointer rounded-lg hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out">
            
@@ -11,8 +17,8 @@ export const ItemCard = ()=>{
                 </div> 
              
              <div className="flex flex-col"> 
-                <div className="text-3xl">Action 2</div>
-                <div className="text-1xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, beatae!</div>
+                <div className="text-3xl">{props.name}</div>
+                <div className="text-1xl">{props.description ? props.description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, beatae!"}</div>
             </div>
             <div className="flex flex-row justify-start  gap-1 "> 
                 <FaStar className="text-yellow-600"></FaStar>
@@ -28,7 +34,7 @@ export const ItemCard = ()=>{
             </div>
 
             <div className="flex flex-row justify-between">
-                <div className="flex flex-row items-end"><span className="font-bold text-2xl text-blue-600">$45</span>/day</div>
+                <div className="flex flex-row items-end"><span className="font-bold text-2xl text-blue-600">${props.price}</span>/day</div>
                  <div className="flex flex-row justify-center items-center"> <button className="flex gap-1 items-center bg-blue-600 text-white p-2 rounded-lg">  <FaCartShopping></FaCartShopping> Add to Cart</button></div>
             </div>
         </div>

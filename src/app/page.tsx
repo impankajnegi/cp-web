@@ -1,8 +1,24 @@
-import { FaSearchLocation, FaShoppingCart } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa6";
-import { ItemCard } from "./components/ItemCard";
+ 
 
-export default function Home() {
+import { FaSearchLocation, FaShoppingCart } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa6"; 
+import { Items } from "./components/items";
+
+
+type Product = {
+    id: string;
+    name: string;
+    price: number;
+    description?: string;
+    inStock: boolean;
+};
+export default async function Home() { 
+ const res =  await fetch(`http://localhost:3000/api/product?page=${1}`) //dummy fetch to wake up the backend server deployed on free tier
+  const products:Product[] = await res.json() 
+ 
+   
+
+  
   return (
     <div className="flex flex-col gap-2">
       {/* Navbar */}
@@ -47,12 +63,8 @@ export default function Home() {
  
 
       {/* item list */}
-      <section className="   flex  flex-wrap justify-evenly pr-3 pl-3 pt-3   ">
-        {["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"].map(
-          (item) => (
-            <ItemCard key={item}></ItemCard>
-          )
-        )}
+      <section className="flex flex-wrap justify-evenly pr-3 pl-3 pt-3   ">
+        <Items products={products} ></Items>
       </section>
       <footer className="flex h-10 justify-center pt-2 bg-neutral-500">This is footer</footer>
     </div>
