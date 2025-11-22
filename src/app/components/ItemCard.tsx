@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaStar } from "react-icons/fa"
 import { FaCartShopping } from "react-icons/fa6"
 type Product = {
@@ -13,7 +14,8 @@ export const ItemCard = ( props:Product)=>{
            
             <div className="flex flex-row flex-wrap w-full h-48  ">
                   {/* <div className="   items-center rounded-full border px-2.5 py-0.5  ">Electronics</div> */}
-                 <img className="  w-full h-48  transition-transform duration-300  " src="/images/item-1.png" ></img>
+                 {/* <img className="  w-full h-48  transition-transform duration-300  " src="/images/item-1.png" ></img> */}
+                <Image alt="item1" className="w-full h-48  transition-transform duration-300" src="/images/item-1.png"></Image>
                 </div> 
              
              <div className="flex flex-col"> 
