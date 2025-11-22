@@ -41,9 +41,6 @@ useEffect(() => {
        if(page != 2 && hasMore) fetchMoreProducts();
       }, [page])
       
-     
-
-
   return (
      <>
       {items.map(

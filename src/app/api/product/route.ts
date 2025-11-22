@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
     if (!req.headers.get("content-type")?.includes("application/json")) {
         return jsonResponse({ error: "Expected application/json" }, 415);
     }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
     let body: any;
     try {
         body = await req.json();
